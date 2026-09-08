@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Path Back to Joy — a poem by J. Ashley Carroll</title>
+<meta name="description" content="The Path Back to Joy — a poem written during a postpartum low, with the Bible study behind each verse.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#171b26;
+    --rain-1:#0f1420;
+    --rain-2:#2c3650;
+    --rain-3:#4a5b7a;
+    --parchment:#f7f2e6;
+    --parchment-deep:#efe6cf;
+    --gold-1:#7d90a8;   /* verse 1 — still grey, still cold */
+    --gold-2:#8f9a7c;   /* verse 2 — thaw beginning */
+    --gold-3:#c2a25a;   /* verse 3 — warming */
+    --gold-4:#c98f3a;   /* verse 4 — full sun */
+    --ash:#6b6255;
+    --line:#ddd2b3;
+    --radius:3px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:'Karla', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  h1,h2,.serif{font-family:'Fraunces', serif;}
+
+  a{color:inherit;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    background:linear-gradient(180deg, var(--rain-1) 0%, var(--rain-2) 72%, var(--rain-3) 100%);
+    color:#eef0f4;
+    padding:5.5rem 1.5rem 6.5rem;
+    text-align:center;
+    overflow:hidden;
+  }
+  .hero .rain{
+    position:absolute;
+    inset:0;
+    opacity:0.16;
+    background-image:repeating-linear-gradient(115deg, transparent 0 26px, rgba(255,255,255,0.5) 26px 27px);
+    pointer-events:none;
+  }
+  .hero-inner{position:relative; max-width:640px; margin:0 auto;}
+  .kicker{
+    font-size:0.78rem;
+    letter-spacing:0.03em;
+    color:#aab4c8;
+    margin:0 0 1.1rem;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 7vw, 3.4rem);
+    font-weight:500;
+    font-style:italic;
+    line-height:1.12;
+    margin:0 0 1.3rem;
+  }
+  .hero p.tag{
+    max-width:32ch;
+    margin:0 auto;
+    color:#c7cede;
+    font-size:1.02rem;
+  }
+
+  /* ---------- Content shell ---------- */
+  .shell{max-width:640px; margin:0 auto; padding:0 1.5rem;}
+
+  /* ---------- Blurb ---------- */
+  .blurb{
+    padding:3.4rem 0 2.6rem;
+    border-bottom:1px solid var(--line);
+  }
+  .blurb p{
+    margin:0 0 1.2rem;
+    font-size:1.04rem;
+    color:#3a3428;
+  }
+  .blurb p:first-of-type::first-letter{
+    font-family:'Fraunces', serif;
+    font-size:3.1rem;
+    line-height:0.8;
+    float:left;
+    padding:0.1rem 0.35rem 0 0;
+    font-weight:500;
+    color:var(--gold-4);
+  }
+  .blurb .sign{
+    margin-top:1.8rem;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.05rem;
+    color:var(--ink);
+  }
+
+  /* ---------- Poem intro ---------- */
+  .poem-intro{
+    padding:2.8rem 0 1rem;
+  }
+  .poem-intro h2{
+    font-size:1rem;
+    font-weight:500;
+    font-style:italic;
+    color:var(--ash);
+    margin:0 0 1.6rem;
+  }
+  .stanza{margin:0 0 1.5rem;}
+  .stanza p{
+    margin:0;
+    font-family:'Fraunces', serif;
+    font-size:1.28rem;
+    line-height:1.5;
+  }
+  .stanza.cry p{font-style:italic;}
+  .note{
+    font-size:0.86rem;
+    color:var(--ash);
+    margin:1.6rem 0 0.2rem;
+  }
+
+  /* ---------- Verses ---------- */
+  .verses{padding:1.2rem 0 1rem;}
+  .verse{
+    border-top:1px solid var(--line);
+    padding:1.9rem 0;
+  }
+  .verse:last-child{border-bottom:1px solid var(--line);}
+
+  .verse-head{
+    display:flex;
+    align-items:flex-start;
+    gap:1rem;
+    width:100%;
+    background:none;
+    border:0;
+    padding:0;
+    text-align:left;
+    cursor:pointer;
+    font:inherit;
+    color:inherit;
+  }
+  .verse-num{
+    flex:0 0 auto;
+    width:2.5rem;
+    height:2.5rem;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Fraunces', serif;
+    font-size:1.05rem;
+    font-weight:500;
+    color:#fff;
+    transition:transform 0.25s ease;
+  }
+  .verse[data-n="1"] .verse-num{background:var(--gold-1);}
+  .verse[data-n="2"] .verse-num{background:var(--gold-2);}
+  .verse[data-n="3"] .verse-num{background:var(--gold-3);}
+  .verse[data-n="4"] .verse-num{background:var(--gold-4);}
+
+  .verse-text{flex:1 1 auto; padding-top:0.15rem;}
+  .verse-text p{
+    margin:0;
+    font-family:'Fraunces', serif;
+    font-size:1.28rem;
+    line-height:1.5;
+  }
+  .verse-toggle-label{
+    flex:0 0 auto;
+    margin-left:auto;
+    padding-top:0.6rem;
+    font-size:0.78rem;
+    color:var(--ash);
+    white-space:nowrap;
+  }
+  .verse-toggle-icon{
+    display:inline-block;
+    transition:transform 0.25s ease;
+    margin-left:0.15rem;
+  }
+  .verse-head[aria-expanded="true"] .verse-toggle-icon{transform:rotate(45deg);}
+  .verse-head[aria-expanded="true"] .verse-num{transform:scale(1.06);}
+
+  .outline{
+    display:grid;
+    grid-template-rows:0fr;
+    transition:grid-template-rows 0.35s ease;
+    margin-left:3.5rem;
+  }
+  .outline-inner{overflow:hidden;}
+  .verse-head[aria-expanded="true"] + .outline{grid-template-rows:1fr;}
+
+  .outline-card{
+    margin-top:1.3rem;
+    padding:1.1rem 1.2rem 1.2rem;
+    background:var(--parchment-deep);
+    border-radius:var(--radius);
+    border:1px solid var(--line);
+  }
+  .outline-card h3{
+    margin:0 0 0.7rem;
+    font-size:0.72rem;
+    letter-spacing:0.02em;
+    text-transform:none;
+    color:var(--ash);
+    font-weight:600;
+    font-family:'Karla', sans-serif;
+  }
+  .outline-card ul{
+    margin:0;
+    padding:0 0 0 1.1rem;
+  }
+  .outline-card li{
+    margin:0 0 0.6rem;
+    font-size:0.94rem;
+    color:#3a3428;
+  }
+  .outline-card li:last-child{margin-bottom:0;}
+
+  /* ---------- Scripture refs ---------- */
+  .ref{
+    position:relative;
+    color:var(--gold-4);
+    border-bottom:1px dotted var(--gold-4);
+    cursor:pointer;
+    white-space:normal;
+  }
+  .ref:hover, .ref:focus-visible{color:#a5731c;}
+
+  .tooltip{
+    position:absolute;
+    left:50%;
+    bottom:calc(100% + 10px);
+    transform:translateX(-50%) translateY(4px);
+    width:270px;
+    max-width:min(70vw, 270px);
+    max-height:190px;
+    overflow-y:auto;
+    background:var(--ink);
+    color:#f1ede0;
+    font-family:'Karla', sans-serif;
+    font-size:0.82rem;
+    line-height:1.45;
+    padding:0.75rem 0.85rem;
+    border-radius:var(--radius);
+    box-shadow:0 10px 24px rgba(0,0,0,0.22);
+    opacity:0;
+    visibility:hidden;
+    transition:opacity 0.15s ease, transform 0.15s ease;
+    z-index:20;
+    text-align:left;
+  }
+  .tooltip::after{
+    content:"";
+    position:absolute;
+    top:100%;
+    left:50%;
+    transform:translateX(-50%);
+    border:6px solid transparent;
+    border-top-color:var(--ink);
+  }
+  .ref.flip-below .tooltip{
+    bottom:auto;
+    top:calc(100% + 10px);
+    transform:translateX(-50%) translateY(-4px);
+  }
+  .ref.flip-below .tooltip::after{
+    top:auto;
+    bottom:100%;
+    border-top-color:transparent;
+    border-bottom-color:var(--ink);
+  }
+  @media (hover:hover) and (pointer:fine){
+    .ref.flip-below:hover .tooltip, .ref.flip-below:focus-visible .tooltip{
+      transform:translateX(-50%) translateY(0);
+    }
+  }
+  .tooltip .tt-ref{
+    display:block;
+    font-weight:700;
+    color:#fff;
+    margin-bottom:0.3rem;
+  }
+  .tooltip .tt-link{
+    display:inline-block;
+    margin-top:0.4rem;
+    color:var(--gold-3);
+    text-decoration:underline;
+  }
+  @media (hover:hover) and (pointer:fine){
+    .ref:hover .tooltip, .ref:focus-visible .tooltip{
+      opacity:1; visibility:visible; transform:translateX(-50%) translateY(0);
+    }
+  }
+
+  /* ---------- Modal (mobile / tap) ---------- */
+  .modal-overlay{
+    position:fixed; inset:0;
+    background:rgba(15,20,32,0.55);
+    display:flex; align-items:flex-end;
+    justify-content:center;
+    z-index:100;
+    opacity:0; visibility:hidden;
+    transition:opacity 0.2s ease;
+  }
+  .modal-overlay.open{opacity:1; visibility:visible;}
+  .modal-card{
+    width:100%;
+    max-width:480px;
+    background:var(--parchment);
+    border-radius:14px 14px 0 0;
+    padding:1.6rem 1.5rem 2rem;
+    transform:translateY(16px);
+    transition:transform 0.25s ease;
+    max-height:75vh;
+    overflow-y:auto;
+  }
+  .modal-overlay.open .modal-card{transform:translateY(0);}
+  @media (min-width:560px){
+    .modal-overlay{align-items:center;}
+    .modal-card{border-radius:14px;}
+  }
+  .modal-head{display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; margin-bottom:0.7rem;}
+  .modal-head h3{
+    margin:0;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:1.3rem;
+  }
+  .modal-close{
+    flex:0 0 auto;
+    border:0; background:var(--parchment-deep);
+    width:2rem; height:2rem; border-radius:50%;
+    font-size:1.1rem; line-height:1; cursor:pointer;
+    color:var(--ink);
+  }
+  .modal-body{font-size:0.98rem; color:#3a3428;}
+  .modal-body .tt-link{
+    display:inline-block; margin-top:0.9rem;
+    color:var(--gold-4); text-decoration:underline; font-weight:600;
+  }
+  .modal-esv{margin-top:0.9rem; font-size:0.76rem; color:var(--ash);}
+
+  /* ---------- Closing ---------- */
+  .closing{padding:2.6rem 0 1.4rem; border-top:1px solid var(--line);}
+  .psalm{
+    text-align:center;
+    margin:0 0 2.4rem;
+  }
+  .psalm p.ref-label{
+    font-size:0.78rem; letter-spacing:0.02em; color:var(--ash); margin:0 0 0.7rem;
+  }
+  .psalm p.verse{
+    border:0; padding:0;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.22rem;
+    line-height:1.55;
+    color:var(--ink);
+  }
+
+  .next-steps h2{
+    font-size:1.35rem; font-weight:500; font-style:italic; margin:0 0 1.1rem;
+  }
+  .next-steps ul{margin:0; padding:0 0 0 1.1rem;}
+  .next-steps li{margin:0 0 0.7rem; font-size:0.98rem; color:#3a3428;}
+
+  footer{
+    padding:2.6rem 0 3.5rem;
+    text-align:center;
+  }
+  footer .sign{
+    font-family:'Fraunces', serif; font-style:italic; font-size:1.05rem; margin-bottom:1.6rem;
+  }
+  footer .esv-note{
+    font-size:0.74rem; color:var(--ash); line-height:1.6; max-width:46ch; margin:0 auto;
+  }
+
+  /* small screens */
+  @media (max-width:420px){
+    .stanza p, .verse-text p{font-size:1.14rem;}
+    .verse-num{width:2.2rem; height:2.2rem; font-size:0.95rem;}
+    .outline{margin-left:0;}
+    .hero{padding:4rem 1.2rem 5.2rem;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="rain" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <p class="kicker">A poem &amp; Bible study</p>
+    <h1>The Path Back to Joy</h1>
+    <p class="tag">Written during a postpartum low — and the search for joy that followed.</p>
+  </div>
+</header>
+
+<div class="shell">
+
+  <section class="blurb">
+    <p>I wrote this poem during a postpartum low that lasted 10 months. I knew the Bible taught about joy during suffering, but I couldn't understand how to experience it.</p>
+    <p>So I prayed for wisdom and truth about my suffering and joy. And I searched the Bible for the answers. I read those passages over and over. Some I even memorized. As I learned, I wrote this poem to speak these lessons back to myself. I always find that internalizing God's trustworthy truth, love, and hope proves to be transformative.</p>
+    <p>And God has also taught me I will not always be joyful in this life. Not even the teacher of contentment, the Apostle Paul, was always joyful. The Bible describes how God provides for and guides His children during those tough times. Now I can face my weak times more prepared, more assured, more at peace, more aware of the rich Hope I have inherited from Jesus' salvation. I can lean on what I learned from the Bible, and I can repeat this poem to myself to help me remember the steps back to joy.</p>
+    <p>I pray this poem encourages you. Even more, I pray you read the Bible passages referenced so you can be strengthened by God's good words.</p>
+    <p class="sign">— J. Ashley Carroll, <span class="ref" data-ref="Psalm 40">Psalm 40</span></p>
+  </section>
+
+  <section class="poem-intro">
+    <h2>Tap a verse number below to see the Bible study behind it. Tap or hover any underlined reference to read it.</h2>
+
+    <div class="stanza">
+      <p>Cold rain<br>Soaked the pain<br>Of my soul.</p>
+    </div>
+    <div class="stanza">
+      <p>Laughter glimmered<br>In and out,<br>But no hold.</p>
+    </div>
+    <div class="stanza">
+      <p>We were learning<br>And growing,<br>God's blessings overflowing.</p>
+    </div>
+    <div class="stanza">
+      <p>But with rain in my eyes<br>And unshakeable chill inside,<br>I cried,</p>
+    </div>
+    <div class="stanza cry">
+      <p>"Where is <em>joy</em>?<br>Where <em>is</em> joy?<br>Why won't it stay?"</p>
+    </div>
+    <div class="stanza">
+      <p>Then I searched Your good word,<br>And the Spirit guides me to pray</p>
+      <p class="note">(<span class="ref" data-ref="Galatians 5:22-25">Galatians 5:22-25</span>, <span class="ref" data-ref="Ephesians 6:17-18">Ephesians 6:17-18</span>)</p>
+    </div>
+    <div class="stanza">
+      <p>This prayer,</p>
+    </div>
+  </section>
+
+  <section class="verses">
+
+    <article class="verse" data-n="1">
+      <button class="verse-head" aria-expanded="false" aria-controls="outline-1">
+        <span class="verse-num">1</span>
+        <span class="verse-text">
+          <p>"Sit me down.<br>Open my ears.<br>Correct all lies with<br>Your Truth, Love, and Hope.<br>Then where are my fears?</p>
+        </span>
+        <span class="verse-toggle-label">outline<span class="verse-toggle-icon">+</span></span>
+      </button>
+      <div class="outline" id="outline-1">
+        <div class="outline-inner">
+          <div class="outline-card">
+            <h3>God's truth, love, &amp; hope for you</h3>
+            <ul>
+              <li>What exactly is weighing on you?</li>
+              <li>Turn to God and ask Him to rescue you. Remember when He rescued you in the past. — <span class="ref" data-ref="Psalm 16, 22, 25, 30, 40">Psalm chapters (ch.) 16, 22, 25, 30, 40</span></li>
+              <li>For dealing with conflict between you and God, follow David's example — <span class="ref" data-ref="Psalm 51">Psalm 51</span>, <span class="ref" data-ref="1 John 1:9">1st John 1:9</span></li>
+              <li>Who are you listening to? — <span class="ref" data-ref="Luke 14:26-35">Luke 14:26-35</span>, <span class="ref" data-ref="James 1:19-27">James 19:27</span></li>
+              <li>Consider the Temporary vs. Eternal — <span class="ref" data-ref="Matthew 6:19-34">Matthew 6:19-34</span></li>
+              <li>God's great love for you — <span class="ref" data-ref="1 John 4:9-10">1st John 4:9-10</span></li>
+              <li>Your beautiful new life &amp; hope — <span class="ref" data-ref="Romans 8">Romans 8</span>, <span class="ref" data-ref="Romans 15:13">15:13</span></li>
+              <li>Follow Jesus' instructions "so you may have joy" — <span class="ref" data-ref="John 14:1-27, John 15:1-17">John 14:1-27, 15:1-17</span></li>
+              <li>David &amp; The Temple — <span class="ref" data-ref="1 Chronicles 15:28, 16:7-36, 28:2-8, 29:10-20">1st Chronicles 15:28, 16:7-36; 28:2-8, 29:10-20</span></li>
+              <li>After God showed Daniel the king's dream — <span class="ref" data-ref="Daniel 2:17-23">Daniel 2:17-23</span></li>
+              <li>The prophet, Habakkuk — <span class="ref" data-ref="Habakkuk 3:17-19">Habakkuk 3:17-19</span></li>
+              <li>The virgin mother of Jesus — <span class="ref" data-ref="Luke 1:46-55">Luke 1:46-55</span></li>
+              <li>Future worship in Heaven — <span class="ref" data-ref="Revelation 4:8-5:14">Revelation 4:8-5:14</span></li>
+              <li>Apostle Paul speaks of facing weakness — <span class="ref" data-ref="2 Corinthians 12:9-10">2nd Corinthians 12:9-10</span>, <span class="ref" data-ref="Philippians 4:4">Philippians 4:4</span></li>
+              <li>Isaiah's prophecies / "4 Songs of the Servant" — <span class="ref" data-ref="Isaiah 42, 49, 50, 52-53">Isaiah ch. 42, 49, 50, 52-53</span></li>
+              <li>Now it's your turn to sing songs to praise God.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="verse" data-n="2">
+      <button class="verse-head" aria-expanded="false" aria-controls="outline-2">
+        <span class="verse-num">2</span>
+        <span class="verse-text">
+          <p>Draw me out.<br>Open my eyes.<br>Point&nbsp;Out&nbsp;Every&nbsp;Gift<br>And every enemy's demise.<br>Here my thankfulness lies.</p>
+        </span>
+        <span class="verse-toggle-label">outline<span class="verse-toggle-icon">+</span></span>
+      </button>
+      <div class="outline" id="outline-2">
+        <div class="outline-inner">
+          <div class="outline-card">
+            <h3>Other valuable gifts from God</h3>
+            <ul>
+              <li>Think of all the good you have.</li>
+              <li>Gifts to everyone — <span class="ref" data-ref="Ecclesiastes 2:24-26">Ecclesiastes 2:24-26</span>, <span class="ref" data-ref="Ecclesiastes 3:9-13">3:9-13</span>, <span class="ref" data-ref="James 1:17">James 1:17</span></li>
+              <li>Gifts of Pardon &amp; Confidence — <span class="ref" data-ref="Psalm 27, 32">Psalm ch.27, ch.32</span></li>
+              <li>Strength against spiritual enemies — <span class="ref" data-ref="Ephesians 6:10-20">Ephesians 6:10-20</span></li>
+              <li>Peace — <span class="ref" data-ref="Philippians 4:4-9">Philippians 4:4-9</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="verse" data-n="3">
+      <button class="verse-head" aria-expanded="false" aria-controls="outline-3">
+        <span class="verse-num">3</span>
+        <span class="verse-text">
+          <p>Lift my head.<br>Loosen my tongue<br>To sing out of<br>All Your good! All Your glory!<br>Finally, my heart feels the sun.</p>
+        </span>
+        <span class="verse-toggle-label">outline<span class="verse-toggle-icon">+</span></span>
+      </button>
+      <div class="outline" id="outline-3">
+        <div class="outline-inner">
+          <div class="outline-card">
+            <h3>Praising God in the Bible</h3>
+            <ul>
+              <li>Examples — <span class="ref" data-ref="Psalm 18-20, 23, 30:1-12, 33:3">Psalm ch.18-20, ch.23, 30:1-12, 33:3</span></li>
+              <li>Book 4 of Psalms declares God the King of creation — <span class="ref" data-ref="Psalm 90-106">ch.90-106</span></li>
+              <li>Moses, Miriam, &amp; the Israelites after crossing the Red Sea — <span class="ref" data-ref="Exodus 15:1-21">Exodus 5:1-21</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="verse" data-n="4">
+      <button class="verse-head" aria-expanded="false" aria-controls="outline-4">
+        <span class="verse-num">4</span>
+        <span class="verse-text">
+          <p>Stand me up.<br>My mind now employ.<br>Stretch my creativity to demonstrate<br>Your <em>great Love</em> for those around me.<br>To love like Christ brings fullness of joy."</p>
+        </span>
+        <span class="verse-toggle-label">outline<span class="verse-toggle-icon">+</span></span>
+      </button>
+      <div class="outline" id="outline-4">
+        <div class="outline-inner">
+          <div class="outline-card">
+            <h3>Instruction for love</h3>
+            <ul>
+              <li>God calls His rescued followers to turn around and love as radically as He does. —
+                <span class="ref" data-ref="John 13:34-35">John 13:34-35</span>,
+                <span class="ref" data-ref="John 15:12-17">15:12-17</span>,
+                <span class="ref" data-ref="Romans 12:9-21">Romans 12:9-21</span>,
+                <span class="ref" data-ref="1 Peter 4:8">1st Peter 4:8</span> &amp;
+                <span class="ref" data-ref="1 Peter 4:19">19</span>,
+                <span class="ref" data-ref="James 5:19-20">James 5:19-20</span>,
+                <span class="ref" data-ref="1 John 4:11-21">1st John 4:11-21</span>,
+                <span class="ref" data-ref="2 Corinthians 1:3-10">2nd Corinthians 1:3-10</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <section class="closing">
+    <div class="psalm">
+      <p class="ref-label"><span class="ref" data-ref="Psalm 16:11">Psalm 16:11</span></p>
+      <p class="verse">You make known to me the path of life; In Your presence there is fullness of joy&hellip;</p>
+    </div>
+
+    <div class="next-steps">
+      <h2>Now it's your turn</h2>
+      <ul>
+        <li>Repeat these truths to yourself and sing them out every day.</li>
+        <li>Talk with God. He desires good things for you and a healthy relationship with you.</li>
+        <li>Fight with the tools God provides to keep your faith &amp; mind strong. — <span class="ref" data-ref="Ephesians 6:10-20">Ephesians 6:10-20</span></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p class="sign">— J. Ashley Carroll</p>
+  <p class="esv-note">Scripture quotations marked ESV are from the ESV&reg; Bible (The Holy Bible, English Standard Version&reg;), copyright &copy; 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. References shown without an ESV excerpt link out to Bible Gateway for the full ESV text.</p>
+</footer>
+
+<div class="modal-overlay" id="modal">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h3 id="modal-ref">Reference</h3>
+      <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // ESV text for the verses referenced most directly by this study.
+  // Every other citation links out to Bible Gateway for the full ESV passage.
+  var verseData = {
+    "Daniel 2:17-23": "Then Daniel went to his house and made the matter known to Hananiah, Mishael, and Azariah, his companions, and told them to seek mercy from the God of heaven concerning this mystery, so that Daniel and his companions might not be destroyed with the rest of the wise men of Babylon. Then the mystery was revealed to Daniel in a vision of the night. Then Daniel blessed the God of heaven. Daniel answered and said: \u201cBlessed be the name of God forever and ever, to whom belong wisdom and might. He changes times and seasons; he removes kings and sets up kings; he gives wisdom to the wise and knowledge to those who have understanding; he reveals deep and hidden things; he knows what is in the darkness, and the light dwells with him. To you, O God of my fathers, I give thanks and praise, for you have given me wisdom and might, and have now made known to me what we asked of you, for you have made known to us the king\u2019s matter.\u201d",
+    "Habakkuk 3:17-19": "Though the fig tree should not blossom, nor fruit be on the vines, the produce of the olive fail and the fields yield no food, the flock be cut off from the fold and there be no herd in the stalls, yet I will rejoice in the Lord; I will take joy in the God of my salvation. God, the Lord, is my strength; he makes my feet like the deer\u2019s; he makes me tread on my high places.",
+    "Galatians 5:22-25": "But the fruit of the Spirit is love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, self-control; against such things there is no law. And those who belong to Christ Jesus have crucified the flesh with its passions and desires. If we live by the Spirit, let us also keep in step with the Spirit.",
+    "Ephesians 6:17-18": "And take the helmet of salvation, and the sword of the Spirit, which is the word of God, praying at all times in the Spirit, with all prayer and supplication. To that end, keep alert with all perseverance, making supplication for all the saints.",
+    "1 John 4:9-10": "In this the love of God was made manifest among us, that God sent his only Son into the world, so that we might live through him. In this is love, not that we have loved God but that he loved us and sent his Son to be the propitiation for our sins.",
+    "Romans 15:13": "May the God of hope fill you with all joy and peace in believing, so that by the power of the Holy Spirit you may abound in hope.",
+    "Psalm 16:11": "You make known to me the path of life; in your presence there is fullness of joy; at your right hand are pleasures forevermore.",
+    "Psalm 40": "This poem's author signs off with Psalm 40 \u2014 David's own song of waiting on the Lord, being lifted from the pit, and having a new song put in his mouth."
+  };
+
+  function bibleGatewayUrl(ref){
+    return "https://www.biblegateway.com/passage/?search=" + encodeURIComponent(ref) + "&version=ESV";
+  }
+
+  // Build tooltip + wire click-to-modal for every scripture reference on the page.
+  var refs = document.querySelectorAll(".ref");
+  var modal = document.getElementById("modal");
+  var modalRef = document.getElementById("modal-ref");
+  var modalBody = document.getElementById("modal-body");
+
+  refs.forEach(function(el){
+    var key = el.getAttribute("data-ref");
+    var text = verseData[key];
+    var label = el.textContent;
+
+    var tip = document.createElement("span");
+    tip.className = "tooltip";
+    if (text){
+      tip.innerHTML = '<span class="tt-ref">' + key + ' (ESV)</span>' + text;
+    } else {
+      tip.innerHTML = '<span class="tt-ref">' + key + '</span>Tap to read the full ESV passage.';
+    }
+    el.appendChild(tip);
+    el.setAttribute("tabindex", "0");
+
+    function positionTooltip(){
+      var rect = el.getBoundingClientRect();
+      el.classList.toggle("flip-below", rect.top < 220);
+    }
+    el.addEventListener("mouseenter", positionTooltip);
+    el.addEventListener("focus", positionTooltip);
+
+    el.addEventListener("click", function(){
+      modalRef.textContent = key;
+      if (text){
+        modalBody.innerHTML = "<p>" + text + "</p>" +
+          '<p class="modal-esv">' + key + ' (ESV) &middot; <a class="tt-link" href="' + bibleGatewayUrl(key) + '" target="_blank" rel="noopener">Read in context on Bible Gateway &rarr;</a></p>';
+      } else {
+        modalBody.innerHTML = "<p>The full text isn't included on this page.</p>" +
+          '<a class="tt-link" href="' + bibleGatewayUrl(key) + '" target="_blank" rel="noopener">Read ' + label + ' on Bible Gateway (ESV) &rarr;</a>';
+      }
+      modal.classList.add("open");
+    });
+
+    el.addEventListener("keydown", function(e){
+      if (e.key === "Enter" || e.key === " "){
+        e.preventDefault();
+        el.click();
+      }
+    });
+  });
+
+  document.getElementById("modal-close").addEventListener("click", function(){
+    modal.classList.remove("open");
+  });
+  modal.addEventListener("click", function(e){
+    if (e.target === modal) modal.classList.remove("open");
+  });
+  document.addEventListener("keydown", function(e){
+    if (e.key === "Escape") modal.classList.remove("open");
+  });
+
+  // Verse-number accordions.
+  document.querySelectorAll(".verse-head").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var expanded = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!expanded));
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
