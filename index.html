@@ -210,23 +210,23 @@
   .verse-head[aria-expanded="true"] .verse-toggle-icon{transform:rotate(45deg);}
   .verse-head[aria-expanded="true"] .verse-num{transform:scale(1.06);}
 
-  .outline{
+  .biblestudy{
     display:grid;
     grid-template-rows:0fr;
     transition:grid-template-rows 0.35s ease;
     margin-left:3.5rem;
   }
-  .outline-inner{overflow:hidden;}
-  .verse-head[aria-expanded="true"] + .outline{grid-template-rows:1fr;}
+  .biblestudy-inner{overflow:hidden;}
+  .verse-head[aria-expanded="true"] + .biblestudy{grid-template-rows:1fr;}
 
-  .outline-card{
+  .biblestudy-card{
     margin-top:1.3rem;
     padding:1.1rem 1.2rem 1.2rem;
     background:var(--parchment-deep);
     border-radius:var(--radius);
     border:1px solid var(--line);
   }
-  .outline-card h3{
+  .biblestudy-card h3{
     margin:0 0 0.7rem;
     font-size:0.72rem;
     letter-spacing:0.02em;
@@ -235,16 +235,16 @@
     font-weight:600;
     font-family:'Karla', sans-serif;
   }
-  .outline-card ul{
+  .biblestudy-card ul{
     margin:0;
     padding:0 0 0 1.1rem;
   }
-  .outline-card li{
+  .biblestudy-card li{
     margin:0 0 0.6rem;
     font-size:0.94rem;
     color:#3a3428;
   }
-  .outline-card li:last-child{margin-bottom:0;}
+  .biblestudy-card li:last-child{margin-bottom:0;}
 
   /* ---------- Scripture refs ---------- */
   .ref{
@@ -410,7 +410,7 @@
   @media (max-width:420px){
     .stanza p, .verse-text p{font-size:1.14rem;}
     .verse-num{width:2.2rem; height:2.2rem; font-size:0.95rem;}
-    .outline{margin-left:0;}
+    .biblestudy{margin-left:0;}
     .hero{padding:4rem 1.2rem 5.2rem;}
   }
 </style>
@@ -465,16 +465,16 @@
   <section class="verses">
 
     <article class="verse" data-n="1">
-      <button class="verse-head" aria-expanded="false" aria-controls="outline-1">
+      <button class="verse-head" aria-expanded="false" aria-controls="biblestudy-1">
         <span class="verse-num">1</span>
         <span class="verse-text">
           <p>"Sit me down.<br>Open my ears.<br>Correct all lies with<br>Your Truth, Love, and Hope.<br>Then where are my fears?<!--<br>My Father dries my tears.--></p>
         </span>
-        <span class="verse-toggle-label">outline<span class="verse-toggle-icon">+</span></span>
+        <span class="verse-toggle-label">bible study<span class="verse-toggle-icon">+</span></span>
       </button>
-      <div class="outline" id="outline-1">
-        <div class="outline-inner">
-          <div class="outline-card">
+      <div class="biblestudy" id="biblestudy-1">
+        <div class="biblestudy-inner">
+          <div class="biblestudy-card">
             <h3>How to correct false beliefs you may have about God's truth, love, &amp; hope for you:</h3>
             <ul>
               <li>It's time to ask yourself: What exactly is weighing on you?</li>
@@ -492,16 +492,16 @@
     </article>
 
     <article class="verse" data-n="2">
-      <button class="verse-head" aria-expanded="false" aria-controls="outline-2">
+      <button class="verse-head" aria-expanded="false" aria-controls="biblestudy-2">
         <span class="verse-num">2</span>
         <span class="verse-text">
           <p>Draw me out.<br>Open my eyes.<br>Point&nbsp;&nbsp;Out&nbsp;&nbsp;Every&nbsp;&nbsp;Gift<br>And every enemy's demise.<br>Here my thankfulness lies.<!--<br>My eyes look up to the skies.--></p>
         </span>
-        <span class="verse-toggle-label">outline<span class="verse-toggle-icon">+</span></span>
+        <span class="verse-toggle-label">biblestudy<span class="verse-toggle-icon">+</span></span>
       </button>
-      <div class="outline" id="outline-2">
-        <div class="outline-inner">
-          <div class="outline-card">
+      <div class="biblestudy" id="biblestudy-2">
+        <div class="biblestudy-inner">
+          <div class="biblestudy-card">
             <h3>Pointing out every gift from God</h3>
             <ul>
               <li>Challenge yourself to think of <em>all</em> the good you have. As much as you can list throughout the day.</li>
@@ -517,16 +517,16 @@
     </article>
 
     <article class="verse" data-n="3">
-      <button class="verse-head" aria-expanded="false" aria-controls="outline-3">
+      <button class="verse-head" aria-expanded="false" aria-controls="biblestudy-3">
         <span class="verse-num">3</span>
         <span class="verse-text">
           <p>Lift my head.<br>Loosen my tongue<br>To sing out of<br>All Your good! All Your glory!<br>Finally, my heart feels the sun.</p>
         </span>
-        <span class="verse-toggle-label">outline<span class="verse-toggle-icon">+</span></span>
+        <span class="verse-toggle-label">biblestudy<span class="verse-toggle-icon">+</span></span>
       </button>
-      <div class="outline" id="outline-3">
-        <div class="outline-inner">
-          <div class="outline-card">
+      <div class="biblestudy" id="biblestudy-3">
+        <div class="biblestudy-inner">
+          <div class="biblestudy-card">
             <h3>Praising God in the Bible</h3>
             <ul>
               <li>Examples — <span class="ref" data-ref="Psalm 18-20, 23, 30:1-12, 33:3">Psalm ch.18-20, ch.23, 30:1-12, 33:3</span></li>
@@ -547,16 +547,16 @@
     </article>
 
     <article class="verse" data-n="4">
-      <button class="verse-head" aria-expanded="false" aria-controls="outline-4">
+      <button class="verse-head" aria-expanded="false" aria-controls="biblestudy-4">
         <span class="verse-num">4</span>
         <span class="verse-text">
           <p>Stand me up.<br>My mind now employ.<br>Stretch my creativity to demonstrate<br>Your <em>great Love</em> for those around me.<br>To love like Christ brings fullness of joy."</p>
         </span>
-        <span class="verse-toggle-label">outline<span class="verse-toggle-icon">+</span></span>
+        <span class="verse-toggle-label">biblestudy<span class="verse-toggle-icon">+</span></span>
       </button>
-      <div class="outline" id="outline-4">
-        <div class="outline-inner">
-          <div class="outline-card">
+      <div class="biblestudy" id="biblestudy-4">
+        <div class="biblestudy-inner">
+          <div class="biblestudy-card">
             <h3>Instruction from God on demonstrating His great love</h3>
             <ul>
               <li>God calls His rescued followers to turn around and love as radically as He does. —
